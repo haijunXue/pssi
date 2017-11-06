@@ -168,8 +168,8 @@ checkHeight(students.input = students,sex.specific=FALSE)
 #also ,include a description as a script in R/ with roxygen2 comments
 #updata evetything via devtools:document()
 
-write.csv(students,file = "data-raw/students.csv",row.names = FALSE)
-stu <- read.csv(file = "data-raw/students.csv")
+write.csv(students,file = "extdata/students.csv",row.names = FALSE)
+stu <- read.csv(file = "extdata/students.csv")
 stu
 #system.file("students", "students.csv", package = "pssi")
 devtools::use_data(stu,overwrite = TRUE)
@@ -192,3 +192,5 @@ devtools::use_data(stu,overwrite = TRUE)
 # also check the help description
 
 #devtools::release()
+
+devtools::install_github("haijunXue/Exercise3")
