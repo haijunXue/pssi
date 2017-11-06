@@ -194,3 +194,42 @@ devtools::use_data(stu,overwrite = TRUE)
 #devtools::release()
 
 devtools::install_github("haijunXue/Exercise3")
+
+
+# Exercise 2
+#1.what is the difference between a package and a library
+#Packages are collections of R functions, data, and compiled code in a well-defined format. The directory where packages are stored is called the library.
+#2.2. What is the difference between source() of scripts and the use of packages?
+#source causes R to accept its input from the named file or URL or connection or expressions directly
+# Input is read and parsed from that file until the end of the file is reached, then the parsed expressions are evaluated sequentially in the chosen environment.
+#library and require load and attach add-on packages.
+#3. In which 5 statuses can packages be?
+
+#4
+#Depends: list here all packages that are required by your package including version if needed (checked if the packages are installed when calling R CMD INSTALL)
+#Suggests: list here packages that are used in the vignettes (when calling R CMD check)
+#SystemRequirements: list package required but not automatically installed when running R CMD INSTALL
+
+#5. Which open sources licenses could be used for your package? How do they mainly differ?
+#MIT (v. similar: to BSD 2 and 3 clause licenses). This is a simple and permissive license. It lets people use and freely distribute your code subject to only one restriction: the license must always be distributed with the code
+#GPL-2 or GPL-3. These are “copy-left” licenses. This means that anyone who distributes your code in a bundle must license the whole bundle in a GPL-compatible way. Additionally, anyone who distributes modified versions of your code (derivative works) must also make the source code available. GPL-3 is a little stricter than GPL-2, closing some older loopholes
+#CC0. It relinquishes all your rights on the code and data so that it can be freely used by anyone for any purpose. This is sometimes called putting it in the public domain, a term which is neither well-defined nor meaningful in all countries.
+#6. What is the difference between loading and attaching?
+#Packages whose namespace only is needed to load the package using library(pkgname) must be listed in the ‘Imports’ field and not in the ‘Depends’ field.
+#Packages that need to be attached to successfully load the package using library(pkgname) must be listed in the ‘Depends’ field, only.
+
+#7.Why should you always use library() in data analysis scripts and not require()?
+#library() which automatically load the package if needed
+
+#8Why should you never use library() in a package
+
+#9. What does lazy loading of data via LazyData: mean? Why is it useful?
+#LazyData makes it easier to access data in your package. Because it’s so important, it’s included in the minimal description created by devtools. It’s described in more detail in external data.
+
+#10. How can you find the perfect compression type for the .rda objects in your package? Why should you
+#want to know this?
+#
+
+#Run tools::checkRdaFiles() to determine the best compression for each file.
+
+#Re-run devtools::use_data() with compress set to that optimal value. If you’ve lost the code for recreating the files, you can use tools::resaveRdaFiles() to re-save in place.
