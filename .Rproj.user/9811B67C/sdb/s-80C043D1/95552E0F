@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#' mean value of the vector elements\n#'\n#' \\code{mean} returns the mean of all the values present in its arguments\n#'\n#' This is a generic function: methods can be defined for it directly or via the\n#' \\code{\\link{mean}} group generic.\n#' @param  x the array input\n\n#' @examples\n#' mean(c(1,2,3))\n\n#' @aliases meanfunction\n#' @return  the mean value\nmean <- function(x){\n  sum = 0\n  for (i in 1:length(x)){\n    sum = x[i]+sum\n  }\n\n  return (round(sum/length(x),digits = 3))\n}\n#x = c(1,2,3)\n#x = students$height\n#c <- mean1(x)\n#c\n\n\n\n",
+    "created" : 1509982668190.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1546377827",
+    "id" : "95552E0F",
+    "lastKnownWriteTime" : 1509983559,
+    "last_content_update" : 1509983559144,
+    "path" : "~/hello-world/U2/pssi/R/utils.R",
+    "project_path" : "R/utils.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

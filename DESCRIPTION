@@ -1,0 +1,20 @@
+Package: pssi
+Title: the difference  of Height  Relevant Functions
+Version: 0.1.0
+Authors@R: person("Haijun", "Xue", email = "xuehaijun793g@gmail.com",
+                  role = c("aut", "cre"))
+Description: This is my awesomem package of awesome function
+Depends: R (>= 3.1.0)
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports:
+  dplyr (>= 0.3.0.1),
+    Rcpp
+RoxygenNote: 6.0.1
+Suggests: testthat
+Collate:
+    'utils.R'
+    'Exercise1.R'
+    'stu.R'
+LinkingTo: Rcpp
