@@ -233,7 +233,7 @@ devtools::use_data(stu,overwrite = TRUE)
 
 #devtools::release()
 
-devtools::install_github("haijunXue/Exercise3")
+devtools::install_github("haijunXue/pssi")
 
 
 # Exercise 2
