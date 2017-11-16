@@ -4,15 +4,12 @@
 \alias{checkHeight}
 \title{calcaulte the difference from the sex-specific or the overall mean height}
 \usage{
-checkHeight(students.input, sex.specific)
+checkHeight(students.input, sex.specific, print.statement)
 }
 \arguments{
 \item{students.input}{the student dataframe}
 
 \item{sex.secific}{the student sex}
-}
-\value{
-result.frame
 }
 \description{
 calculate

@@ -26,3 +26,7 @@ mean <- function(x){
 
 
 
+#mean1 <- function(x){
+ # return (round(sum(x)/length(x),digits = 3))
+#}
+

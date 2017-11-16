@@ -74,17 +74,18 @@ checkHeight3(students.input = students)
 #' @description calculate
 #' @param students.input the student dataframe
 #' @param sex.secific the student sex
+#' @param print.statement
+#' @import checkmate
 #' @export
 #' @include utils.R
 #' @seealso \code{\link[utils]{head}}
-#' @return result.frame
 #' @examples
 #'checkHeight(students.input = students,sex.specific=FALSE)
 #'checkHeight(students.input = students,sex.specific=TRUE)
 
 
 
-checkHeight = function(students.input,sex.specific){
+checkHeight = function(students.input,sex.specific,print.statement){
   # prepare result data.frame
   result.frame = data.frame(matrix(NA, nrow = nrow(students.input), ncol = 2))
   colnames(result.frame) = c("name", "difference")
@@ -111,11 +112,50 @@ checkHeight = function(students.input,sex.specific){
     }
   })
 
-  return(result.frame)
+
+  print.data.frame(result.frame)
+  if(print.statement){
+    print("Yippie, I calculated the mean differences!")
+  }
+ # return(result.frame)
+
+
 }
-checkHeight(students.input = students,sex.specific=FALSE)
+checkHeight(students.input = students,sex.specific=FALSE,print.statement = TRUE)
+
+library(checkmate)
+#---4-1-3
+#assert : Combine multiple checks into one assertion
+#x = 1
+#assert(checkChoice(x, c("a", "b")), checkDataFrame(x))
+#AssertCollection: Collect multiple assertions
+#makeAssertCollection()
+#reportAssertions(collection)
+#----4-1-4(1)
+# check if the variable that controls the sex specificity of
+#the mean calculation is boolean(Hint:assertLogical)
+sex.specific = TRUE
+assertLogical(x = sex.specific,len=1L)
+#2)
+print.statement = FALSE
+assertLogical(x=print.statement,len=1L)
+#3)
+students.input = students
+assertDataFrame(x=students.input, min.rows = 4,ncols = 5, types = c("numeric", "numeric", "numeric", "factor", "character"),any.missing = FALSE)
+#4)
+apply(students.input[3],MARGIN = 2,FUN = function(h){
+  assertNumeric(x = h,lower = 1.30,upper = 2.40,finite = FALSE,any.missing = FALSE)
+  })
+#5)
+apply(students.input[4],MARGIN = 2,FUN = function(sex){
+  assertFactor(x = factor(sex),max.levels = 2,levels = c("F","M"))
+})
+
+#1-5
 
 
+
+#assertNumeric(lower = 1.30,upper = 2.40,finite = FALSE,len = 3,any.missing = FALSE)
 #------------5
 #add a welcome text like Welcome to my first R-package and thanks for using it.muchacho!
 #after your package is loaded
@@ -123,7 +163,7 @@ checkHeight(students.input = students,sex.specific=FALSE)
 # and packageStartupMessage()
 
 .onAttach <- function(libname,pkgname){
-  packageStartupMessage("Welcome to my first R-package and thanks for using it, muchacho!")
+  packageStartupMessage("Welcome to to  my first R-package and thanks for using it, muchacho!")
 }
 
 #-----------6
