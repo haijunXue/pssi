@@ -75,7 +75,7 @@ checkHeight3(students.input = students)
 #' @param students.input the student dataframe
 #' @param sex.secific the student sex
 #' @param print.statement
-#' @import checkmate
+#' @import  checkmate
 #' @export
 #' @include utils.R
 #' @seealso \code{\link[utils]{head}}
@@ -152,7 +152,7 @@ apply(students.input[4],MARGIN = 2,FUN = function(sex){
 })
 
 #1-5
-
+#devtools:: documents()
 
 
 #assertNumeric(lower = 1.30,upper = 2.40,finite = FALSE,len = 3,any.missing = FALSE)
@@ -208,11 +208,11 @@ apply(students.input[4],MARGIN = 2,FUN = function(sex){
 #also ,include a description as a script in R/ with roxygen2 comments
 #updata evetything via devtools:document()
 
-write.csv(students,file = "extdata/students.csv",row.names = FALSE)
-stu <- read.csv(file = "extdata/students.csv")
-stu
+#write.csv(students,file = "extdata/students.csv",row.names = FALSE)
+#stu <- read.csv(file = "extdata/students.csv")
+#stu
 #system.file("students", "students.csv", package = "pssi")
-devtools::use_data(stu,overwrite = TRUE)
+#devtools::use_data(stu,overwrite = TRUE)
 
 #-------------13
 # run a check on your whole package via devtool's check() function
@@ -233,7 +233,7 @@ devtools::use_data(stu,overwrite = TRUE)
 
 #devtools::release()
 
-devtools::install_github("haijunXue/pssi",force=TRUE)
+#devtools::install_github("haijunXue/pssi",force=TRUE)
 
 
 # Exercise 2
