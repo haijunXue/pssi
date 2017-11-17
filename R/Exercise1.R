@@ -68,14 +68,15 @@ checkHeight3(students.input = students)
 # the funciton should have a signature like this:
 # checkHeight = function(students.input,sex.specific=TRUE)
 
-
+#' @import  checkmate
+#' @import dplyr
 #' @title  calcaulte the difference from the sex-specific or the overall mean height
 #'
 #' @description calculate
 #' @param students.input the student dataframe
 #' @param sex.secific the student sex
 #' @param print.statement
-#' @import  checkmate
+
 #' @export
 #' @include utils.R
 #' @seealso \code{\link[utils]{head}}
@@ -91,6 +92,16 @@ checkHeight = function(students.input,sex.specific,print.statement){
   colnames(result.frame) = c("name", "difference")
   result.frame$name <- students.input$name
 
+  #-----------------------
+  #assertLogical(x = sex.specific,len=1L)
+  #assertLogical(x=print.statement,len=1L)
+  #assertDataFrame(x=students.input, min.rows = 4,ncols = 5, types = c("numeric", "numeric", "numeric", "factor", "character"),any.missing = FALSE)
+  #assertNumeric(x = students.input[,"height"],lower = 1.30,upper = 2.40,finite = FALSE,any.missing = FALSE)
+  #assertFactor(x= students.input[,"sex"],levels = c('F','M'),max.levels = 2)
+  #assertNumeric(x = as.integer(students.input[,'height']),lower = 1.30,upper = 2.40,finite = FALSE,any.missing = FALSE)
+
+
+#---------------------------------
   # calculate sex means for height
   male.mean = students.input %>%
     filter(sex == "M") %>%
@@ -113,11 +124,11 @@ checkHeight = function(students.input,sex.specific,print.statement){
   })
 
 
-  print.data.frame(result.frame)
+#  print.data.frame(result.frame)
   if(print.statement){
     print("Yippie, I calculated the mean differences!")
   }
- # return(result.frame)
+ return(result.frame)
 
 
 }
@@ -134,25 +145,41 @@ library(checkmate)
 #----4-1-4(1)
 # check if the variable that controls the sex specificity of
 #the mean calculation is boolean(Hint:assertLogical)
-sex.specific = TRUE
-assertLogical(x = sex.specific,len=1L)
+#sex.specific = TRUE
+#assertLogical(x = sex.specific,len=1L)
 #2)
-print.statement = FALSE
-assertLogical(x=print.statement,len=1L)
+#print.statement = FALSE
+#assertLogical(x=print.statement,len=1L)
 #3)
-students.input = students
-assertDataFrame(x=students.input, min.rows = 4,ncols = 5, types = c("numeric", "numeric", "numeric", "factor", "character"),any.missing = FALSE)
+#students.input = students
+#assertDataFrame(x=students.input, min.rows = 4,ncols = 5, types = c("numeric", "numeric", "numeric", "factor", "character"),any.missing = FALSE)
 #4)
-apply(students.input[3],MARGIN = 2,FUN = function(h){
-  assertNumeric(x = h,lower = 1.30,upper = 2.40,finite = FALSE,any.missing = FALSE)
-  })
-#5)
-apply(students.input[4],MARGIN = 2,FUN = function(sex){
-  assertFactor(x = factor(sex),max.levels = 2,levels = c("F","M"))
-})
+#apply(students.input[3],MARGIN = 2,FUN = function(h){
+#  assertNumeric(x = h,lower = 1.30,upper = 2.40,finite = FALSE,any.missing = FALSE)
+#  })
+#assertNumeric(x = students.input[,"height"],lower = 1.30,upper = 2.40,finite = FALSE,any.missing = FALSE)
 
-#1-5
+#assertFactor(x= students.input[,"sex"],levels = c('F','M'),max.levels = 2)
+#5)
+
+#4-1-5
 #devtools:: documents()
+#4-1-6
+
+#load(file="data/students.rda")
+
+#4-1-7
+#apply(students.input[3],MARGIN = 2,FUN = function(h){
+#  assertNumeric(x = as.integer(h),lower = 1.30,upper = 2.40,finite = FALSE,any.missing = FALSE)
+ # print(as.integer(h))
+#})
+#assertNumeric(x = as.integer(students.input[,'height']),lower = 1.30,upper = 2.40,finite = FALSE,any.missing = FALSE)
+#4-1-8
+
+#4-3
+#4-3-1
+#devtools::use_testthat()
+#devtools::test()
 
 
 #assertNumeric(lower = 1.30,upper = 2.40,finite = FALSE,len = 3,any.missing = FALSE)
@@ -212,7 +239,7 @@ apply(students.input[4],MARGIN = 2,FUN = function(sex){
 #stu <- read.csv(file = "extdata/students.csv")
 #stu
 #system.file("students", "students.csv", package = "pssi")
-#devtools::use_data(stu,overwrite = TRUE)
+#devtools::use_data(students,overwrite = TRUE)
 
 #-------------13
 # run a check on your whole package via devtool's check() function

@@ -16,6 +16,8 @@ Suggests: testthat
 Collate: 
     'utils.R'
     'Exercise1.R'
+    'checkHeight.R'
     'record.R'
     'stu.R'
+    'übung1.R'
 LinkingTo: Rcpp
