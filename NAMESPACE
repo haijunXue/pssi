@@ -2,5 +2,5 @@
 
 export()
 export(checkHeight)
-import(checkmate)
+#import(checkmate)
 import(dplyr)
