@@ -27,10 +27,6 @@ expect_failure(
 )
 #stop("variable <paramter> not found"),
 #-----------3.4
-assertDataFrame(x=students.input, min.rows = 4,ncols = 5, types = c("numeric", "numeric", "numeric", "factor", "character"),any.missing = FALSE)
-assertNumeric(x = students.input[,"height"],lower = 1.30,upper = 2.40,finite = FALSE,any.missing = FALSE)
-assertFactor(x= students.input[,"sex"],levels = c('F','M'),max.levels = 2)
-assertNumeric(x = as.integer(students.input[,'height']),lower = 1.30,upper = 2.40,finite = FALSE,any.missing = FALSE)
 
 test_that("variable checks", {
  expect_error(checkHeight(students,sex.specific = "XX"),
@@ -53,10 +49,12 @@ test_that("variable checks", {
   expect_error(checkHeight(students_test,TRUE,FALSE))
 })
 
+colnames(test.data)[which(names(test.data) == "age")] <- "test"
+expect_that(checkHeight(test.data), throws_error("Variable <age> not found."))
 #----5
 test_that("print checking", {
   expect_output(checkHeight(students,sex.specific = TRUE, print.statement = TRUE), "Yippie, I calculated the mean differences!")
 })
 
 #--6
-testthat::test_dir("tests/testthat/")
+#testthat::test_dir("tests/testthat/")
