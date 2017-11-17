@@ -75,7 +75,7 @@ checkHeight3(students.input = students)
 #' @description calculate
 #' @param students.input the student dataframe
 #' @param sex.secific the student sex
-#' @param print.statement
+#' @param print.statement the student variable
 
 #' @export
 #' @include utils.R

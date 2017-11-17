@@ -19,5 +19,5 @@ Collate:
     'checkHeight.R'
     'record.R'
     'stu.R'
-    'übung1.R'
+    'u1.R'
 LinkingTo: Rcpp
